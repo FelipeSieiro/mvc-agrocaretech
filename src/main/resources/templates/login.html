@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="text-emerald-200 flex flex-col items-center justify-center min-h-screen px-4 bg-emerald-900">
+<h1 class="text-4xl font-bold mb-8 text-emerald-300">Login</h1>
+<input type="email" placeholder="E-mail" class="w-11/12 md:w-4/5 bg-white text-black rounded-xl py-3 px-4 mb-4 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+<div class="relative w-11/12 md:w-4/5 mb-4">
+    <input type="password" placeholder="Senha" class="w-full bg-white text-black rounded-xl py-3 px-4 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-emerald-600 font-bold">Mostrar</button>
+</div>
+<button class="bg-emerald-700 w-4/5 py-3 rounded-full text-white font-bold shadow-lg mb-6 hover:bg-emerald-600 transition">Entrar</button>
+<a href="#" class="text-emerald-500 text-base underline mb-6 opacity-90 hover:opacity-100 transition">Esqueceu sua senha?</a>
+
+<div class="w-4/5 border-t border-gray-500 mb-6"></div>
+
+<div class="flex items-center mb-6">
+    <p class="text-white mr-2">Não tem uma conta?</p>
+    <a href="#" class="text-emerald-500 font-bold underline">Cadastre-se</a>
+</div>
+
+<div class="flex items-center">
+    <a href="/oauth2/authorization/github" class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center m-2 w-64">
+                <span class="icon mr-2">
+                    <i class="fab fa-github"></i>
+                </span>
+        <span>Acessar com GitHub</span>
+    </a>
+    <a href="/oauth2/authorization/google" class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center m-2 w-64">
+                <span class="icon mr-2">
+                    <i class="fab fa-google"></i>
+                </span>
+        <span>Acessar com Google</span>
+    </a>
+</div>
+
+</body>
+</html>

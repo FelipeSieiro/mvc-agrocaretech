@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Epic Task</title>
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="container is-flex is-flex-direction-column is-align-items-center p-6">
+
+<article class="message">
+  <div class="message-header">
+    <p>Sair</p>
+    <a href="javascript:history.back()" class="delete" aria-label="delete"></a>
+  </div>
+  <div class="message-body">
+    Tem certeza que deseja sair dessa aplicação maravilhosa ?
+
+    <div class="m-6 is-flex">
+      <a href="javascript:history.back()" class="button">
+                <span class="icon is-small">
+                  <i class="fa fa-arrow-left"></i>
+                </span>
+        <span>Cancelar</span>
+      </a>
+
+      <form th:action="@{/logout}" method="post">
+        <button class="button is-primary ml-4">
+                    <span class="icon is-small">
+                      <i class="fa fa-sign-out"></i>
+                    </span>
+          <span>Sim, sair do app</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</article>
+
+
+</body>
+</html>
