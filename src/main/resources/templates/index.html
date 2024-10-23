@@ -5,16 +5,18 @@
     <title>Agrocare Tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-emerald-900 text-white">
+<body class="bg-[#1A1A1A] text-white">
 
-<nav class="bg-emerald-800 p-4 shadow-lg">
+<nav class="bg-[#1A1A1A]  p-4 shadow-lg">
     <div class="flex justify-between items-center">
         <a class="text-2xl font-bold" href="/">Epic Task</a>
         <div class="navbar-end">
             <div class="buttons">
-                <a href="/logout" class="bg-transparent hover:bg-emerald-700 text-white font-semibold py-2 px-4 border border-white rounded transition duration-200">
+                <a href="/logout" class="bg-transparent hover:bg-emerald-700 text-white font-semibold py-2
+                                            px-4 border border-white rounded transition duration-200">
                     Log out
                 </a>
             </div>
@@ -25,29 +27,31 @@
 <div class="p-4">
     <h2 class="text-xl mb-4">Olá, Agropecuarista</h2>
 
-    <div class="bg-emerald-800 rounded-lg p-6 text-center mb-6 shadow-lg">
-        <img class="w-24 h-24 rounded-full border-4 border-white mx-auto mb-4" alt="Avatar do Usuário" />
+    <div class="bg-[#333333B3] rounded-lg p-6 text-center mb-6 shadow-lg">
+        <figure class="image">
+            <img class="is-rounded" th:src="${user.attribute.avatar}" alt="avatar do usuário" />
+        </figure>
         <p>📍 São Paulo, SP</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <div class="bg-emerald-800 rounded-lg p-4 text-center shadow-lg">
-            <h3 class="text-3xl">3.127</h3>
+        <div class="bg-[#333333B3] rounded-lg p-4 text-center shadow-lg">
+            <h3 class="text-3xl text-emerald-300">3.127</h3>
             <p>Animais</p>
         </div>
-        <div class="bg-emerald-800 rounded-lg p-4 text-center shadow-lg">
-            <h3 class="text-3xl">81</h3>
+        <div class="bg-[#333333B3] rounded-lg p-4 text-center shadow-lg">
+            <h3 class="text-3xl text-emerald-300">81</h3>
             <p>Consultas</p>
         </div>
     </div>
 
     <div class="mb-6">
         <h3 class="text-lg font-bold mb-2">Alertas Recentes</h3>
-        <div class="flex items-center mt-2 bg-emerald-800 rounded p-2">
+        <div class="flex items-center mt-2 bg-[#333333B3] rounded p-2">
             <i class="fas fa-exclamation-triangle text-red-500"></i>
             <span class="ml-2">2 animais com suspeita de febre aftosa.</span>
         </div>
-        <div class="flex items-center mt-2 bg-emerald-800 rounded p-2">
+        <div class="flex items-center mt-2 bg-[#333333B3] rounded p-2">
             <i class="fas fa-exclamation-circle text-orange-500"></i>
             <span class="ml-2">Estoque de vacinas abaixo do esperado.</span>
         </div>
@@ -55,8 +59,8 @@
 
     <div>
         <h3 class="text-lg font-bold mb-2">Últimos Atendimentos</h3>
-        <div class="bg-emerald-800 rounded-lg p-4 mb-4 flex items-center shadow-lg">
-            <div class="bg-emerald-800 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+        <div class="bg-[#333333B3] rounded-lg p-4 mb-4 flex items-center shadow-lg">
+            <div class="bg-[#333333B3] rounded-full w-12 h-12 flex items-center justify-center mr-4">
                 <i class="fas fa-paw"></i>
             </div>
             <div>
