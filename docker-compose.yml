@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_DB: magrocaretech
-      POSTGRES_USER: magrocaretech
-      POSTGRES_PASSWORD: magrocaretech
+      POSTGRES_DB: mvcagrocaretech
+      POSTGRES_USER: mvcagrocaretech
+      POSTGRES_PASSWORD: mvcagrocaretech
     ports:
       - "5432:5432"
     volumes:
@@ -13,8 +13,8 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     environment:
-      RABBITMQ_DEFAULT_USER: magrocaretech
-      RABBITMQ_DEFAULT_PASS: magrocaretech
+      RABBITMQ_DEFAULT_USER: mvcagrocaretech
+      RABBITMQ_DEFAULT_PASS: mvcagrocaretech
     ports:
       - "5672:5672"
       - "15672:15672"

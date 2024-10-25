@@ -7,39 +7,78 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body class="bg-[#1A1A1A] text-white">
+    <style>
+        /* Personalizando a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px; /* Largura da barra de rolagem */
+        }
 
-    <nav class="bg-[#1A1A1A]  p-4 shadow-lg">
-        <div class="flex justify-between items-center">
-            <a class="text-2xl font-bold" href="/">Epic Task</a>
-            <div class="navbar-end">
-                <div class="buttons">
-                    <a href="/logout" class="bg-transparent hover:bg-emerald-700 text-white font-semibold py-2
-                                                px-4 border border-white rounded transition duration-200">
-                        Log out
-                    </a>
+        ::-webkit-scrollbar-thumb {
+            background-color: #4B5563; /* Cor do "polegar" da barra de rolagem */
+            border-radius: 10px; /* Bordas arredondadas do "polegar" */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #6B7280; /* Cor do "polegar" ao passar o mouse */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1F2937; /* Cor do fundo da barra de rolagem */
+        }
+    </style>
+</head>
+<body class="bg-[#1A1A1A] text-white h-screen flex flex-col">
+
+<nav class="bg-[#1A1A1A] p-4 shadow-lg">
+    <div class="flex justify-between items-center">
+        <a class="text-2xl font-bold" href="/">Epic Task</a>
+        <div class="navbar-end">
+            <div class="buttons">
+                <a href="/logout" class="bg-transparent hover:bg-emerald-700 text-white font-semibold py-2 px-4 border border-white rounded transition duration-200">
+                    Log out
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="flex-grow container mx-auto my-4 flex flex-col">
+    <div class="bg-[#2E2E2E] rounded-lg flex-grow p-4 mb-4 shadow-lg mx-2">
+        <div class="flex flex-col h-full">
+            <div id="messageContainer" class="flex-grow mb-4 overflow-auto" style="max-height: calc(100vh - 200px);">
+                <div th:each="message : ${messages}" class="message mb-4 flex items-start">
+                    <img src="https://avatar.iran.liara.run/public/job/operator/male" alt="User avatar" class="w-10 h-10 rounded-full mr-3">
+                    <div>
+                        <strong th:text="${message.user} + ':'" class="font-semibold text-emerald-300"></strong>
+                        <span class="text-gray-400 text-sm block" th:text="${#temporals.format(message.timestamp, 'HH:mm:ss')}"></span>
+                        <p th:text="${message.content}" class="bg-emerald-500 bg-opacity-50 p-2 rounded-lg inline-block mt-1"></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <div class="container mx-auto my-5">
-        <div class="bg-gray-700 rounded-lg h-96 overflow-y-auto p-4 mb-4">
-            <div th:each="message : ${messages}" class="message mb-2">
-                <strong th:text="${message.user} + ':'" class="font-semibold"></strong>
-                <span th:text="${message.content}"></span>
-                <span class="text-gray-400 text-sm" th:text="${#temporals.format(message.timestamp, 'HH:mm:ss')}"></span>
-            </div>
-        </div>
-
-        <form action="/send" method="post">
-            <div class="flex">
-                <input type="text" name="message" placeholder="Digite uma mensagem" class="flex-grow p-2 rounded-l-lg bg-gray-600 text-white" required>
-                <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-bold p-2 rounded-r-lg">Enviar</button>
-            </div>
-        </form>
     </div>
 
+    <form action="/send" method="post" class="flex mb-4 mx-2">
+        <input type="text" name="message" placeholder="Digite uma mensagem" class="flex-grow p-3 rounded-l-lg bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+        <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold p-3 rounded-r-lg transition duration-200">Enviar</button>
+    </form>
+</div>
+
+<script>
+    function scrollToBottom() {
+        const messageContainer = document.getElementById("messageContainer");
+        messageContainer.scrollTop = messageContainer.scrollHeight; // Rola para o final
+    }
+
+    window.onload = function() {
+        scrollToBottom(); // Rola para o final quando a página é carregada
+    };
+
+    // Chama a rolagem também após o envio de uma nova mensagem
+    document.querySelector('form').addEventListener('submit', function() {
+        setTimeout(scrollToBottom, 100); // Aguarda um pouco antes de rolar após o envio
+    });
+</script>
 
 </body>
 </html>
