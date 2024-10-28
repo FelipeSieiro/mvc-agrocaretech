@@ -28,17 +28,7 @@ public class UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         var principal = super.loadUser(userRequest);
-        System.out.println(principal);
         var email = principal.getAttribute("email").toString();
         return userRepository.findByEmail(email).orElseGet(() -> new User(principal));
-    }
-
-    public void addScore(User user, @Min(1) int score) {
-        user.setScore(user.getScore() + score);
-        userRepository.save(user);
-    }
-
-    public List<User> getRanking() {
-        return userRepository.findAllByOrderByScoreDesc();
     }
 }

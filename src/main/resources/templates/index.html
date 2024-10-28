@@ -7,44 +7,53 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Estilos personalizados para um toque moderno */
-        .shadow-custom {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-    </style>
 </head>
-<body class="bg-[#1A1A1A] text-white font-sans">
+<body class="bg-[#1A1A1A] text-white font-poppins">
 
 <nav class="bg-[#1A1A1A] p-4 shadow-lg">
     <div class="flex justify-between items-center max-w-6xl mx-auto">
-        <a class="text-2xl font-bold" href="/">Agrocare Tech</a>
-        <div class="navbar-end">
-            <div class="buttons">
-                <a href="/logout" class="bg-transparent hover:bg-emerald-600 text-white font-semibold py-2 px-4 border border-white rounded-lg transition duration-200">
-                    Log out
-                </a>
+        <a class="text-2xl font-bold text-white" href="/">Agrocare Tech</a>
+        <div class="flex items-center space-x-4">
+            <a href="/" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-home mr-1"></i> Home
+            </a>
+            <a href="/chat" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-comments mr-1"></i> Chat
+            </a>
+            <a href="/servico" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-history mr-1"></i> Histórico
+            </a>
+            <div class="navbar-end">
+                <div class="buttons">
+                    <a href="/logout" class="bg-transparent hover:bg-emerald-600 text-white font-semibold py-2 px-4 border border-white rounded-lg transition duration-200">
+                        Log out
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </nav>
 
 <div class="p-4 max-w-6xl mx-auto">
-    <h2 class="text-2xl mb-4 text-center font-semibold">Olá, Agropecuarista</h2>
+    <h1 class="text-center text-3xl font-semibold mb-4">
+        Olá, <span th:text="${user.name}"></span>
+    </h1>
 
-    <div class="bg-[#2E2E2E] rounded-lg p-6 text-center mb-6 shadow-custom"> <!-- Verde emeral -->
-        <img th:src="${user != null && user.avatar != null ? user.avatar : 'https://avatar.iran.liara.run/public/job/farmer/male'}" class="w-24 h-24 rounded-full border-4 border-emerald-400 mx-auto mb-4" alt="Avatar do Usuário" />
+    <div class="bg-[#2E2E2E] rounded-lg p-6 text-center mb-6 shadow-custom">
+        <figure class="image mb-4">
+            <img class="w-24 h-24 rounded-full border-4 border-emerald-400 mx-auto" th:src="${user.avatar}" alt="Avatar do usuário" />
+        </figure>
         <p class="text-lg">📍 São Paulo, SP</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <div class="bg-[#2E2E2E] rounded-lg p-4 text-center shadow-custom">
             <h3 class="text-4xl text-emerald-400">3.127</h3>
-            <p class="text-sm">Animais</p>
+            <p class="text-sm text-gray-400">Animais</p>
         </div>
         <div class="bg-[#2E2E2E] rounded-lg p-4 text-center shadow-custom">
             <h3 class="text-4xl text-emerald-400">81</h3>
-            <p class="text-sm">Consultas</p>
+            <p class="text-sm text-gray-400">Consultas</p>
         </div>
     </div>
 
@@ -73,7 +82,7 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="/animais" class="bg-emerald-500 text-white rounded-lg py-2 px-4 hover:bg-emerald-600 transition duration-200">Ver Mais</a>
+            <a href="/servico" class="bg-emerald-500 text-white rounded-lg py-2 px-4 hover:bg-emerald-600 transition duration-200">Ver Mais</a>
         </div>
     </div>
 

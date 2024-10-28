@@ -30,13 +30,24 @@
 <body class="bg-[#1A1A1A] text-white h-screen flex flex-col">
 
 <nav class="bg-[#1A1A1A] p-4 shadow-lg">
-    <div class="flex justify-between items-center">
-        <a class="text-2xl font-bold" href="/">Epic Task</a>
-        <div class="navbar-end">
-            <div class="buttons">
-                <a href="/logout" class="bg-transparent hover:bg-emerald-700 text-white font-semibold py-2 px-4 border border-white rounded transition duration-200">
-                    Log out
-                </a>
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+        <a class="text-2xl font-bold text-white" href="/">Agrocare Tech</a>
+        <div class="flex items-center space-x-4">
+            <a href="/" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-home mr-1"></i> Home
+            </a>
+            <a href="/chat" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-comments mr-1"></i> Chat
+            </a>
+            <a href="/servico" class="flex items-center text-white hover:text-emerald-600">
+                <i class="fas fa-history mr-1"></i> Histórico
+            </a>
+            <div class="navbar-end">
+                <div class="buttons">
+                    <a href="/logout" class="bg-transparent hover:bg-emerald-600 text-white font-semibold py-2 px-4 border border-white rounded-lg transition duration-200">
+                        Log out
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -47,7 +58,7 @@
         <div class="flex flex-col h-full">
             <div id="messageContainer" class="flex-grow mb-4 overflow-auto" style="max-height: calc(100vh - 200px);">
                 <div th:each="message : ${messages}" class="message mb-4 flex items-start">
-                    <img src="https://avatar.iran.liara.run/public/job/operator/male" alt="User avatar" class="w-10 h-10 rounded-full mr-3">
+                    <img th:src="${message.avatar}" alt="User avatar" class="w-10 h-10 rounded-full mr-3">
                     <div>
                         <strong th:text="${message.user} + ':'" class="font-semibold text-emerald-300"></strong>
                         <span class="text-gray-400 text-sm block" th:text="${#temporals.format(message.timestamp, 'HH:mm:ss')}"></span>

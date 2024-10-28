@@ -9,12 +9,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 @Entity
-@Table(name = "epicuser")
+@Table(name = "agrocare_users")
 @Data
 public class User extends DefaultOAuth2User {
 
@@ -25,10 +26,12 @@ public class User extends DefaultOAuth2User {
 
     @Column(unique = true)
     String email;
-
     String avatar;
+    String phoneNumber;
+    String password;
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 
-    int score = 0;
 
     public User(OAuth2User principal){
         super(
@@ -47,8 +50,6 @@ public class User extends DefaultOAuth2User {
                 Map.of("email", "anonymous@email.com"),
                 "email"
         );
-
-        this.avatar = this.getAttribute("https://avatar.iran.liara.run/public/job/farmer/male");
         this.email = this.getAttribute("email");
     }
 

@@ -15,15 +15,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public String index(Model model, @AuthenticationPrincipal OAuth2User principal){
         var user = (User) principal;
 
         model.addAttribute("user", user);
-        model.addAttribute("users", userService.getRanking());
 
-        return "users";
+        return "index";
 
     }
+
 
 }
