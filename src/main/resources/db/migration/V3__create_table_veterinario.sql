@@ -11,6 +11,3 @@ CREATE TABLE agrocare_veterinario (
                                       especializacao_veterinario VARCHAR(255),
                                       cmrv VARCHAR(50)
 );
-
-INSERT INTO agrocare_veterinario (id, name, phone_number, email, password, avatar, role, especializacao_veterinario, cmrv) VALUES
-    ('33333333-3333-3333-3333-333333333333', 'Dr. João Silva', '11999999999', 'joao.silva@exemplo.com', 'senha123', NULL, 'Veterinário', 'Clínica Geral', 'CRMV1234')

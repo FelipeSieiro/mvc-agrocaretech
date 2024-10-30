@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>Serviços</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-emerald-900 text-white">
-
-
+<body class="bg-[#1A1A1A] text-white font-poppins">
 
 <nav class="bg-[#1A1A1A] p-4 shadow-lg">
     <div class="flex justify-between items-center max-w-6xl mx-auto">
@@ -25,9 +22,9 @@
                 <i class="fas fa-history mr-1"></i> Histórico
             </a>
             <div class="navbar-end">
-                <div class="buttons">
-                    <a href="/logout" class="bg-transparent hover:bg-emerald-600 text-white font-semibold py-2 px-4 border border-white rounded-lg transition duration-200">
-                        Log out
+                <div class="flex items-center">
+                    <a href="/logout" class="text-white hover:text-emerald-600">
+                        <i class="fas fa-sign-out-alt text-xl"></i>
                     </a>
                 </div>
             </div>
@@ -35,34 +32,32 @@
     </div>
 </nav>
 
-<div class="p-4">
-    <h3 class="text-lg font-bold mb-2">Meus Serviços</h3>
-    <h3 class="text-lg font-bold mb-2">Últimos Atendimentos</h3>
-    <div>
-        <div class="bg-[#2E2E2E] rounded-lg p-4 mb-4 flex items-center shadow-custom">
-            <div class="bg-[#2E2E2E] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                <i class="fas fa-paw"></i>
+
+<div class="p-6 m-10 rounded-lg ">
+    <h1 class="text-2xl font-bold text-white mb-6">Meus Serviços</h1>
+    <div th:each="servico : ${servicos}">
+        <h2 class="text-xl font-bold text-white mb-4">Últimos Atendimentos</h2>
+        <div class="bg-gray-700 rounded-lg p-4 mb-4 flex items-start shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="bg-green-600 rounded-full w-12 h-12 flex items-center justify-center mr-4 text-xl text-white">
+                <i class="fa-solid fa-cow"></i>
             </div>
-            <div>
-                <h4 class="font-bold">Consulta de bovino #123</h4>
-                <p class="text-sm">10/10/2024</p>
-                <p class="text-sm">Bovino apresentou sinais de febre.</p>
-                <p class="text-sm">Preço: R$ 150,00</p>
+            <div class="flex-1">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-lg font-semibold text-white">Consulta ao bovino</h2>
+                    <p class="text-sm text-gray-400" th:text="${'Id da consulta: ' + #strings.substring(servico.id, 0, 3)}">Id da consulta:</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-sm font-semibold text-green-400" th:text="${'Id do bovino: ' + #strings.substring(servico.animal.id, 0, 3)}">Id do bovino: </p>
+                    <p class="text-sm text-gray-300">Data atendimento: <span th:text="${servico.dataServico}"></span></p>
+                    <p class="text-sm text-gray-400" th:text="${servico.diagnostico}">Diagnóstico</p>
+                    <p class="text-sm font-medium text-white" th:text="${'Preço: R$ ' + (servico.precoServico)}">Preço</p>
+                </div>
             </div>
+        </div>
     </div>
-        <div>
-            <div class="bg-[#2E2E2E] rounded-lg p-4 mb-4 flex items-center shadow-custom">
-                <div class="bg-[#2E2E2E] rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                    <i class="fas fa-paw"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold">Consulta de bovino #123</h4>
-                    <p class="text-sm">10/10/2024</p>
-                    <p class="text-sm">Bovino apresentou sinais de febre.</p>
-                    <p class="text-sm">Preço: R$ 150,00</p>
-                </div>
-            </div>
 </div>
+
+
 
 </body>
 </html>

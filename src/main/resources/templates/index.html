@@ -7,6 +7,26 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Personalizando a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px; /* Largura da barra de rolagem */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #4B5563; /* Cor do "polegar" da barra de rolagem */
+            border-radius: 10px; /* Bordas arredondadas do "polegar" */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #6B7280; /* Cor do "polegar" ao passar o mouse */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1F2937; /* Cor do fundo da barra de rolagem */
+        }
+    </style>
+
 </head>
 <body class="bg-[#1A1A1A] text-white font-poppins">
 
@@ -24,9 +44,9 @@
                 <i class="fas fa-history mr-1"></i> Histórico
             </a>
             <div class="navbar-end">
-                <div class="buttons">
-                    <a href="/logout" class="bg-transparent hover:bg-emerald-600 text-white font-semibold py-2 px-4 border border-white rounded-lg transition duration-200">
-                        Log out
+                <div class="flex items-center">
+                    <a href="/logout" class="text-white hover:text-emerald-600">
+                        <i class="fas fa-sign-out-alt text-xl"></i>
                     </a>
                 </div>
             </div>

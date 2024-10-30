@@ -13,6 +13,3 @@ CREATE TABLE agrocare_servico (
                                   CONSTRAINT fk_veterinario FOREIGN KEY (veterinario_id) REFERENCES agrocare_veterinario(id)
 );
 
-
-INSERT INTO agrocare_servico (data_servico, preco_servico, diagnostico, animal_id, veterinario_id) VALUES
-('2024-10-01', 150.00, 'Consulta inicial', '22222222-2222-2222-2222-222222222222', '33333333-3333-3333-3333-333333333333')

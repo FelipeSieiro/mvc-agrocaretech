@@ -24,22 +24,27 @@ public class ChatController {
     }
 
     @GetMapping("/chat")
-    public String chatPage(Model model) {
+    public String chatPage(Model model, @AuthenticationPrincipal OAuth2User principal) {
         messages.clear();
         model.addAttribute("messages", messages);
         return "chat";
     }
 
     @PostMapping("/send")
-    public String sendMessage(@RequestParam("message") String userMessage, Model model) {
-        messages.add(new Message(userMessage, "Você", Instant.now(), "https://img.icons8.com/?size=100&id=jNNpHMEKIOv5&format=png&color=000000")); // Adiciona a mensagem do usuário
+    public String sendMessage(@RequestParam("message") String userMessage,
+                              Model model,
+                              @AuthenticationPrincipal OAuth2User principal) {
+        var user = (User) principal;
+
+
+        messages.add(new Message(userMessage, user.getName(), Instant.now(), user.getAvatar()));
+
         String chatResponse = chatService.sentToAi(userMessage);
-        messages.add(new Message(chatResponse, "Sr. Pigson", Instant.now(), "https://avatar.iran.liara.run/public/job/farmer/male")); // Adiciona a resposta da IA
+
+        messages.add(new Message(chatResponse, "Sr. Pigson", Instant.now(), "https://avatar.iran.liara.run/public/job/farmer/male"));
 
         model.addAttribute("messages", messages);
+        model.addAttribute("user", user);
         return "chat";
     }
-
-
-
 }
