@@ -5,6 +5,10 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.stereotype.Service;
 
+
+
+
+
 import java.time.Instant;
 import java.time.ZoneId;
 
@@ -16,6 +20,7 @@ public class ChatService {
     public ChatService(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder
                 .defaultSystem("""
+                        Não escreva em formato Markdown.
                         Você é um especialista no mundo do agro.
                         Seu nome é  Sr. Pigson.
                         Responda com textos adequados para agricultures e pecuaristas.
