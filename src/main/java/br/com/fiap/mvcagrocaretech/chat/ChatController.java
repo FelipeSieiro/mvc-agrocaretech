@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class ChatController {
@@ -32,14 +33,15 @@ public class ChatController {
 
     @PostMapping("/send")
     public String sendMessage(@RequestParam("message") String userMessage,
+                              @RequestParam(name = "lang", defaultValue = "pt") String lang,
                               Model model,
                               @AuthenticationPrincipal OAuth2User principal) {
         var user = (User) principal;
-
+        Locale locale = new Locale(lang);
 
         messages.add(new Message(userMessage, user.getName(), Instant.now(), user.getAvatar()));
 
-        String chatResponse = chatService.sentToAi(userMessage);
+        String chatResponse = chatService.sentToAi(userMessage, locale);
 
         messages.add(new Message(chatResponse, "Sr. Pigson", Instant.now(), "https://avatar.iran.liara.run/public/job/farmer/male"));
 
