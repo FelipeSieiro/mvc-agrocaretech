@@ -1,5 +1,7 @@
 package br.com.fiap.mvcagrocaretech.veterinario;
 
+import br.com.fiap.mvcagrocaretech.animal.AnimalService;
+import br.com.fiap.mvcagrocaretech.servico.ServicoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,43 +16,25 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("veterinario")
 @Slf4j
+@RequestMapping("/veterinario")
 public class VeterinarioController {
 
-    @Autowired
-    private VeterinarioRepository repository;
+    private final VeterinarioService veterinarioService;
+
+
+    public VeterinarioController(VeterinarioService veterinarioService) {
+        this.veterinarioService = veterinarioService;
+    }
 
     @GetMapping
-    public String findAll(Model model) {
-        List<Veterinario> veterinarios = repository.findAll();
+    public String index(Model model) {
+        var veterinarios = veterinarioService.findAll();
         model.addAttribute("veterinarios", veterinarios);
-        model.addAttribute("veterinario", new Veterinario()); // Para o formulário
-        return "veterinario/list"; // Nome da view para listar veterinários
+        return "veterinario";
     }
 
-    @PostMapping
-    public String create(@Valid @ModelAttribute("veterinario") Veterinario veterinario,
-                         BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "veterinario/list"; // Retorna para a lista se houver erro
-        }
-        // Setando data de criação e atualização
-        veterinario.setCreatedAt(LocalDateTime.now());
-        veterinario.setUpdatedAt(LocalDateTime.now());
 
-        log.info("Cadastrando veterinário {}", veterinario);
-        repository.save(veterinario);
-        redirect.addFlashAttribute("message", "Veterinário cadastrado com sucesso!");
-        return "redirect:/veterinario";
-    }
 
-    @PostMapping("{id}")
-    public String delete(@PathVariable UUID id, RedirectAttributes redirect) {
-        log.info("Excluindo veterinário com id {}", id);
-        repository.deleteById(id);
-        redirect.addFlashAttribute("message", "Veterinário excluído com sucesso!");
-        return "redirect:/veterinario";
-    }
 
 }

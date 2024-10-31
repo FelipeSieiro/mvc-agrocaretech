@@ -10,7 +10,7 @@
     <style>
         /* Personalizando a barra de rolagem */
         ::-webkit-scrollbar {
-            width: 8px; /* Largura da barra de rolagem */
+            width: 8px;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -88,7 +88,7 @@
 
     // Chama a rolagem também após o envio de uma nova mensagem
     document.querySelector('form').addEventListener('submit', function() {
-        setTimeout(scrollToBottom, 100); // Aguarda um pouco antes de rolar após o envio
+        setTimeout(scrollToBottom, 1); // Aguarda um pouco antes de rolar após o envio
     });
 </script>
 
